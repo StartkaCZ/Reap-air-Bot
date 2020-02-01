@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Turret
+  - Reactor
+  - NPC
+  - Enemy
+  - Wall
+  - Barrier
   layers:
   - Default
   - TransparentFX
