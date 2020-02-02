@@ -65,7 +65,7 @@ public class Turret : MonoBehaviour
     {
         if (_target != null)
         {
-            float distanceFromTarget = Vector3.Distance(transform.position, _target.position);
+            float distanceFromTarget = Vector3.Distance(_transform.position, _target.position);
             float maxDistance = LINE_OF_SIGHT * ConstantHolder.GRID_SIZE * 0.5f;
 
             if (distanceFromTarget > maxDistance)
@@ -89,7 +89,7 @@ public class Turret : MonoBehaviour
 
 
 
-    private void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (_health > 0)
         {
@@ -111,6 +111,7 @@ public class Turret : MonoBehaviour
 
     private void ProcessDeath()
     {
+        _target = null;
         // switch model
     }
 }

@@ -180,7 +180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974469695937608658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45, y: 0.75, z: -0.2}
+  m_LocalPosition: {x: 0.45, y: 0.75, z: 0.2}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1511334817538364399}
@@ -320,6 +320,7 @@ GameObject:
   - component: {fileID: 1467309859810698281}
   - component: {fileID: 5626765307454421435}
   - component: {fileID: 8658743939591567780}
+  - component: {fileID: 1156902178}
   - component: {fileID: 7025777455366512721}
   m_Layer: 0
   m_Name: NPC
@@ -377,12 +378,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 2212822579540323748}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
+  m_Radius: 1
+  m_Speed: 20
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 10
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -403,6 +404,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!65 &1156902178
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2212822579540323748}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 4, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &7025777455366512721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,6 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SPEED: 25
+  LINE_OF_SIGHT: 10
   MAX_HEALTH: 50
 --- !u!1 &3389187890635329609
 GameObject:
@@ -688,7 +703,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4703061295821258495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.45, y: 0.75, z: -0.22}
+  m_LocalPosition: {x: -0.45, y: 0.75, z: 0.2}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1511334817538364399}

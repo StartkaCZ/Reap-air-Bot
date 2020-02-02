@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5447123407489399455}
   - component: {fileID: 3557111139012941473}
   m_Layer: 0
-  m_Name: Capsule (1)
+  m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 5479329159623816037}
   - component: {fileID: 6987671993136140137}
   m_Layer: 0
-  m_Name: Capsule (2)
+  m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -327,8 +327,8 @@ GameObject:
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8410305760671818474
 Transform:
@@ -418,8 +418,8 @@ GameObject:
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &9113893691560506182
 Transform:
@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 2629511543797453591}
   - component: {fileID: 7415839342353481187}
   m_Layer: 0
-  m_Name: Capsule (4)
+  m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 3774362883179695475}
   - component: {fileID: 4362829024505767811}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -663,8 +663,8 @@ GameObject:
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &729972668959650130
 Transform:
@@ -750,7 +750,7 @@ GameObject:
   - component: {fileID: 6993943597262980596}
   - component: {fileID: 1450675682585857462}
   m_Layer: 0
-  m_Name: Capsule (3)
+  m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -921,8 +921,8 @@ GameObject:
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4306202477805227710
 Transform:
