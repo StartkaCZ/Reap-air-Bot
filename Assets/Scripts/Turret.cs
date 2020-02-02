@@ -5,16 +5,25 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     [SerializeField]
-    [Range(2.5f, 7.5f)]
-    float       LINE_OF_SIGHT = 5.0f;
+    ParticleSystem[]    _guns;
 
     [SerializeField]
-    int         MAX_HEALTH = 100;
+    ParticleSystem[]    _explosions;
 
-    Transform   _transform;
-    Transform   _target;
+    [SerializeField]
+    GameObject[]        _onOrOf;
 
-    int         _health;
+    [SerializeField]
+    [Range(2.5f, 10.0f)]
+    float               LINE_OF_SIGHT = 10.0f;
+
+    [SerializeField]
+    int                 MAX_HEALTH = 100;
+
+    Transform           _transform;
+    Transform           _target;
+
+    int                 _health;
 
 
     void Start()
@@ -37,6 +46,9 @@ public class Turret : MonoBehaviour
         }
 
         _health = 0;
+
+        _onOrOf[0].SetActive(true);
+        _onOrOf[1].SetActive(false);
     }
 
     private void SetBoxCollider(BoxCollider collider)
@@ -75,7 +87,6 @@ public class Turret : MonoBehaviour
             else
             {
                 _transform.LookAt(_target, Vector3.up);
-                // FIRE
             }
         }
     }
@@ -83,7 +94,8 @@ public class Turret : MonoBehaviour
 
     public void Repaired()
     {
-        // change mesh
+        _onOrOf[0].SetActive(false);
+        _onOrOf[1].SetActive(true);
         _health = 100;
     }
 
@@ -112,6 +124,8 @@ public class Turret : MonoBehaviour
     private void ProcessDeath()
     {
         _target = null;
-        // switch model
+        AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.EXPLOSION);
+        _onOrOf[0].SetActive(true);
+        _onOrOf[1].SetActive(false);
     }
 }

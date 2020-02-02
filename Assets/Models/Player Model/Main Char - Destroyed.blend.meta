@@ -19,6 +19,20 @@ ModelImporter:
     100026: Eyes
     100028: Eyes_001
     100030: //RootNode
+    100032: Cube.003
+    100034: Cube.004
+    100036: Cube.005
+    100038: Cube.006
+    100040: Cube.007
+    100042: Cube.008
+    100044: Cube.009
+    100046: Cube.010
+    100048: Cube.011
+    100050: Cube.012
+    100052: Cube.013
+    100054: Cube.014
+    100056: Eyes.001
+    100058: Lamp
     400000: Body
     400002: Cube_003
     400004: Cube_004
@@ -35,12 +49,27 @@ ModelImporter:
     400026: Eyes
     400028: Eyes_001
     400030: //RootNode
+    400032: Cube.003
+    400034: Cube.004
+    400036: Cube.005
+    400038: Cube.006
+    400040: Cube.007
+    400042: Cube.008
+    400044: Cube.009
+    400046: Cube.010
+    400048: Cube.011
+    400050: Cube.012
+    400052: Cube.013
+    400054: Cube.014
+    400056: Eyes.001
+    400058: Lamp
     2100000: Material
     2100002: Metal
     2100004: Eyes
     2100006: unnamed
     2100008: Rubber
     2100010: Body
+    2100012: No Name
     2300000: Body
     2300002: Cube_003
     2300004: Cube_004
@@ -56,6 +85,19 @@ ModelImporter:
     2300024: Cube_014
     2300026: Eyes
     2300028: Eyes_001
+    2300030: Cube.003
+    2300032: Cube.004
+    2300034: Cube.005
+    2300036: Cube.006
+    2300038: Cube.007
+    2300040: Cube.008
+    2300042: Cube.009
+    2300044: Cube.010
+    2300046: Cube.011
+    2300048: Cube.012
+    2300050: Cube.013
+    2300052: Cube.014
+    2300054: Eyes.001
     3300000: Body
     3300002: Cube_003
     3300004: Cube_004
@@ -71,6 +113,19 @@ ModelImporter:
     3300024: Cube_014
     3300026: Eyes
     3300028: Eyes_001
+    3300030: Cube.003
+    3300032: Cube.004
+    3300034: Cube.005
+    3300036: Cube.006
+    3300038: Cube.007
+    3300040: Cube.008
+    3300042: Cube.009
+    3300044: Cube.010
+    3300046: Cube.011
+    3300048: Cube.012
+    3300050: Cube.013
+    3300052: Cube.014
+    3300054: Eyes.001
     4300000: Eyes_001
     4300002: Cube_013
     4300004: Cube_009
@@ -86,8 +141,22 @@ ModelImporter:
     4300024: Cube_003
     4300026: Body
     4300028: Eyes
+    4300030: Eyes.001
+    4300032: Cube.013
+    4300034: Cube.009
+    4300036: Cube.008
+    4300038: Cube.012
+    4300040: Cube.010
+    4300042: Cube.014
+    4300044: Cube.011
+    4300046: Cube.007
+    4300048: Cube.006
+    4300050: Cube.005
+    4300052: Cube.004
+    4300054: Cube.003
     7400000: Default Take
     9500000: //RootNode
+    10800000: Lamp
   externalObjects: {}
   materials:
     importMaterials: 1

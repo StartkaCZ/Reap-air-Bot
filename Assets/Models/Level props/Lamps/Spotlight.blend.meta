@@ -8,26 +8,37 @@ ModelImporter:
     100004: Cube_002
     100006: Cylinder
     100008: //RootNode
+    100010: Cube.001
+    100012: Cube.002
     400000: Cube
     400002: Cube_001
     400004: Cube_002
     400006: Cylinder
     400008: //RootNode
+    400010: Cube.001
+    400012: Cube.002
     2100000: unnamed
     2100002: Metal
     2100004: Light_emmisive
+    2100006: No Name
     2300000: Cube
     2300002: Cube_001
     2300004: Cube_002
     2300006: Cylinder
+    2300008: Cube.001
+    2300010: Cube.002
     3300000: Cube
     3300002: Cube_001
     3300004: Cube_002
     3300006: Cylinder
+    3300008: Cube.001
+    3300010: Cube.002
     4300000: Cylinder
     4300002: Cube_001
     4300004: Cube_002
     4300006: Cube
+    4300008: Cube.001
+    4300010: Cube.002
     7400000: Default Take
     9500000: //RootNode
   externalObjects:

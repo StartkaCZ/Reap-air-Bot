@@ -5,6 +5,12 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    ParticleSystem[] _explosions;
+
+    [SerializeField]
+    GameObject[]     _onOrOf;
+
     [Header("General")]
     [SerializeField]
     [Tooltip("In meters per second")]
@@ -38,9 +44,9 @@ public class Player : MonoBehaviour
     Transform   _transform;
     Rigidbody   _rigidbody;
 
+    float       _targetTime;
     float       _repairTime;
     int         _health;
-    
 
 
     void Start()
@@ -48,7 +54,13 @@ public class Player : MonoBehaviour
         _transform = transform;
         _rigidbody = GetComponent<Rigidbody>();
 
+        _health = MAX_HEALTH;
+
         _repairTime = 0;
+        _targetTime = NPC_REPAIR_TIME;
+
+        _onOrOf[0].SetActive(false);
+        _onOrOf[1].SetActive(true);
     }
 
 
@@ -56,7 +68,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         ProcessMovement();
-        ProcessRepair();
+
+        if (!CrossPlatformInputManager.GetButton("Fire1"))
+        {
+            _repairTime = 0;
+        }
     }
 
     private void ProcessMovement()
@@ -88,16 +104,6 @@ public class Player : MonoBehaviour
             _rigidbody.velocity = Vector3.zero;
     }
 
-    private void ProcessRepair()
-    {
-        if (CrossPlatformInputManager.GetButton("Fire1"))
-        {
-            _repairTime += Time.deltaTime;
-        }
-        else
-            _repairTime = 0.0f;
-    }
-
 
 
     void OnParticleCollision(GameObject other)
@@ -111,7 +117,9 @@ public class Player : MonoBehaviour
     private void ProcessDeath()
     {
         // explosion
-        // mesh
+        _onOrOf[0].SetActive(true);
+        _onOrOf[1].SetActive(false);
+        AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.EXPLOSION);
     }
 
 
@@ -147,7 +155,11 @@ public class Player : MonoBehaviour
         if (_repairTime >= TURRET_REPAIR_TIME)
         {
             collision.gameObject.GetComponent<Turret>().Repaired();
+            AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.REPAIR_COMPLETE);
         }
+
+        _targetTime = TURRET_REPAIR_TIME;
+        ProcessRepair();
     }
 
     private void ProcessCollisionWithReactor(Collision collision)
@@ -155,7 +167,12 @@ public class Player : MonoBehaviour
         if (_repairTime >= REACTOR_REPAIR_TIME)
         {
             collision.gameObject.GetComponent<Reactor>().Repaired();
+            if (_repairTime == 0.0f)
+                AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.REPAIRING);
         }
+
+        _targetTime = REACTOR_REPAIR_TIME;
+        ProcessRepair();
     }
 
     private void ProcessCollisionWithNPC(Collision collision)
@@ -163,7 +180,12 @@ public class Player : MonoBehaviour
         if (_repairTime >= NPC_REPAIR_TIME)
         {
             collision.gameObject.GetComponent<NPC>().Repaired();
+            if (_repairTime == 0.0f)
+                AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.REPAIRING);
         }
+
+        _targetTime = NPC_REPAIR_TIME;
+        ProcessRepair();
     }
 
     private void ProcessCollisionWithBarrier(Collision collision)
@@ -171,6 +193,37 @@ public class Player : MonoBehaviour
         if (_repairTime >= BARRIER_REPAIR_TIME)
         {
             collision.gameObject.GetComponent<Barrier>().Repaired();
+            if (_repairTime == 0.0f)
+                AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.REPAIRING);
         }
+
+        _targetTime = BARRIER_REPAIR_TIME;
+        ProcessRepair();
+    }
+
+
+    private void ProcessRepair()
+    {
+        if (CrossPlatformInputManager.GetButton("Fire1"))
+        {
+            _repairTime += Time.deltaTime;
+
+            if (_repairTime == 0.0f)
+                AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.REPAIRING);
+        }
+        else
+            _repairTime = 0.0f;
+    }
+
+
+
+    public float RepairFraction
+    {
+        get { return _repairTime / _targetTime; }
+    }
+
+    public float HPFraction
+    {
+        get { return _health / MAX_HEALTH; }
     }
 }

@@ -11,6 +11,7 @@ ModelImporter:
     100010: //RootNode
     100012: Sphere
     100014: Sphere_001
+    100016: Sphere.001
     400000: Circle
     400002: Cube
     400004: Cube_001
@@ -19,10 +20,14 @@ ModelImporter:
     400010: //RootNode
     400012: Sphere
     400014: Sphere_001
+    400016: Sphere.001
     2100000: unnamed
     2100002: Color_1
     2100004: Color_2
     2100006: Laser
+    2100008: No Name
+    2100010: Color 1
+    2100012: Color 2
     2300000: Circle
     2300002: Cube
     2300004: Cube_001
@@ -30,6 +35,7 @@ ModelImporter:
     2300008: Cube_003
     2300010: Sphere
     2300012: Sphere_001
+    2300014: Sphere.001
     3300000: Circle
     3300002: Cube
     3300004: Cube_001
@@ -37,6 +43,7 @@ ModelImporter:
     3300008: Cube_003
     3300010: Sphere
     3300012: Sphere_001
+    3300014: Sphere.001
     4300000: Sphere
     4300002: Circle
     4300004: Cube_003
@@ -44,6 +51,7 @@ ModelImporter:
     4300008: Cube_001
     4300010: Cube
     4300012: Sphere_001
+    4300014: Sphere.001
     7400000: Default Take
     9500000: //RootNode
   externalObjects:

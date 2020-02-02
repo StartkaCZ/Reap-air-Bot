@@ -4,6 +4,12 @@ using UnityEngine.AI;
 public class NPC : MonoBehaviour
 {
     [SerializeField]
+    ParticleSystem[]    _guns;
+
+    [SerializeField]
+    ParticleSystem[]    _explosions;
+
+    [SerializeField]
     [Tooltip("In meters per second")]
     float               SPEED = 25.0f;
 
@@ -22,13 +28,15 @@ public class NPC : MonoBehaviour
     NavMeshAgent        _agent;
     FormationPoint      _formationPoint;
 
+    float               _startY;
+
     int                 _health;
 
 
 
     void Start()
     {
-        _health = 0;
+        _health = MAX_HEALTH;
 
         FormationPoint[] formationPoints = GameObject.FindObjectsOfType<FormationPoint>();
 
@@ -48,6 +56,8 @@ public class NPC : MonoBehaviour
 
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = SPEED;
+
+        _startY = _transform.position.y;
 
 
         BoxCollider[] colliders = GetComponents<BoxCollider>();
@@ -84,11 +94,16 @@ public class NPC : MonoBehaviour
                 if (distanceFromTarget > maxDistance)
                 {
                     _target = null;
+
+                    foreach (ParticleSystem gun in _guns)
+                    {
+                        ParticleSystem.EmissionModule emissionModule = gun.emission;
+                        emissionModule.enabled = false;
+                    }
                 }
                 else
                 {
                     _transform.LookAt(_target, Vector3.up);
-                    // FIRE
                 }
             }
         }
@@ -97,9 +112,18 @@ public class NPC : MonoBehaviour
 
     public void Repaired()
     {
-        // change mesh
         _health = MAX_HEALTH;
         _rigidbody.isKinematic = false;
+
+        foreach (ParticleSystem explosion in _explosions)
+        {
+            ParticleSystem.EmissionModule emissionModule = explosion.emission;
+            emissionModule.enabled = false;
+        }
+
+        Vector3 position = _transform.position;
+        position.y = _startY;
+        _transform.position = position;
     }
 
 
@@ -111,6 +135,12 @@ public class NPC : MonoBehaviour
             if (_target == null && other.tag == "Enemy")
             {
                 _target = other.transform;
+
+                foreach (ParticleSystem gun in _guns)
+                {
+                    ParticleSystem.EmissionModule emissionModule = gun.emission;
+                    emissionModule.enabled = true;
+                }
             }
         }
     }
@@ -129,7 +159,16 @@ public class NPC : MonoBehaviour
         _target = null;
         _formationPoint.occupied = false;
         _rigidbody.isKinematic = true;
-        // explode
-        // change mesh
+        AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.EXPLOSION);
+
+        Vector3 position = _transform.position;
+        position.y = _startY * 0.5f;
+        _transform.position = position;
+
+        foreach (ParticleSystem explosion in _explosions)
+        {
+            ParticleSystem.EmissionModule emissionModule = explosion.emission;
+            emissionModule.enabled = false;
+        }
     }
 }

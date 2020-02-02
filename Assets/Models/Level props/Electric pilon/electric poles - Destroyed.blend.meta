@@ -18,6 +18,18 @@ ModelImporter:
     100024: Torus_006
     100026: Torus_007
     100028: Torus_008
+    100030: Icosphere.001
+    100032: Icosphere.002
+    100034: Pilon Right
+    100036: Pilon Right.001
+    100038: Pilon Right.004
+    100040: Pilon Right.005
+    100042: Torus.003
+    100044: Torus.004
+    100046: Torus.005
+    100048: Torus.006
+    100050: Torus.007
+    100052: Torus.008
     400000: //RootNode
     400002: Icosphere_001
     400004: Icosphere_002
@@ -33,7 +45,20 @@ ModelImporter:
     400024: Torus_006
     400026: Torus_007
     400028: Torus_008
+    400030: Icosphere.001
+    400032: Icosphere.002
+    400034: Pilon Right
+    400036: Pilon Right.001
+    400038: Pilon Right.004
+    400040: Pilon Right.005
+    400042: Torus.003
+    400044: Torus.004
+    400046: Torus.005
+    400048: Torus.006
+    400050: Torus.007
+    400052: Torus.008
     2100000: unnamed
+    2100002: No Name
     2300000: Icosphere_001
     2300002: Icosphere_002
     2300004: Pilon_Right
@@ -48,6 +73,18 @@ ModelImporter:
     2300022: Torus_006
     2300024: Torus_007
     2300026: Torus_008
+    2300028: Icosphere.001
+    2300030: Icosphere.002
+    2300032: Pilon Right
+    2300034: Pilon Right.001
+    2300036: Pilon Right.004
+    2300038: Pilon Right.005
+    2300040: Torus.003
+    2300042: Torus.004
+    2300044: Torus.005
+    2300046: Torus.006
+    2300048: Torus.007
+    2300050: Torus.008
     3300000: Icosphere_001
     3300002: Icosphere_002
     3300004: Pilon_Right
@@ -62,6 +99,18 @@ ModelImporter:
     3300022: Torus_006
     3300024: Torus_007
     3300026: Torus_008
+    3300028: Icosphere.001
+    3300030: Icosphere.002
+    3300032: Pilon Right
+    3300034: Pilon Right.001
+    3300036: Pilon Right.004
+    3300038: Pilon Right.005
+    3300040: Torus.003
+    3300042: Torus.004
+    3300044: Torus.005
+    3300046: Torus.006
+    3300048: Torus.007
+    3300050: Torus.008
     4300000: Pilon_Right_004
     4300002: Pilon_Right_005
     4300004: Pilon_Right_003
@@ -76,6 +125,18 @@ ModelImporter:
     4300022: Torus_004
     4300024: Torus_003
     4300026: Icosphere_001
+    4300028: Pilon Right.004
+    4300030: Pilon Right.005
+    4300032: Pilon Right.001
+    4300034: Pilon Right
+    4300036: Icosphere.002
+    4300038: Torus.008
+    4300040: Torus.007
+    4300042: Torus.006
+    4300044: Torus.005
+    4300046: Torus.004
+    4300048: Torus.003
+    4300050: Icosphere.001
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}

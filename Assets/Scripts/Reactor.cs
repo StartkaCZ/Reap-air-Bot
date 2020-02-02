@@ -5,6 +5,9 @@ using UnityEngine;
 public class Reactor : MonoBehaviour
 {
     [SerializeField]
+    GameObject[]        _onOrOf;
+
+    [SerializeField]
     int     MAX_HEALTH = 100;
 
     int     _health;
@@ -13,6 +16,9 @@ public class Reactor : MonoBehaviour
     void Start()
     {
         _health = MAX_HEALTH;
+
+        _onOrOf[0].SetActive(false);
+        _onOrOf[1].SetActive(true);
     }
 
 
@@ -25,9 +31,12 @@ public class Reactor : MonoBehaviour
 
     public void Repaired()
     {
-        // change mesh
+        _onOrOf[0].SetActive(false);
+        _onOrOf[1].SetActive(true);
+
         _health = MAX_HEALTH;
         // take into account REACTOR_ENERGY
+        AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.EXPLOSION);
     }
 
 
@@ -42,7 +51,8 @@ public class Reactor : MonoBehaviour
 
     private void ProcessDeath()
     {
-        // switch model
+        _onOrOf[0].SetActive(true);
+        _onOrOf[1].SetActive(false);
         // disable particles
     }
 }

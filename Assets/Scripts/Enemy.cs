@@ -4,6 +4,12 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
+    ParticleSystem[]    _guns;
+
+    [SerializeField]
+    ParticleSystem[]    _explosions;
+
+    [SerializeField]
     [Tooltip("In meters per second")]
     float               SPEED = 25.0f;
 
@@ -69,11 +75,16 @@ public class Enemy : MonoBehaviour
                 if (distanceFromTarget > maxDistance)
                 {
                     _target = null;
+
+                    foreach (ParticleSystem gun in _guns)
+                    {
+                        ParticleSystem.EmissionModule emissionModule = gun.emission;
+                        emissionModule.enabled = false;
+                    }
                 }
                 else
                 {
                     _transform.LookAt(_target, Vector3.up);
-                    // FIRE
                 }
             }
         }
@@ -99,6 +110,8 @@ public class Enemy : MonoBehaviour
     {
         // explode
         _target = null;
+        AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.EXPLOSION);
+        Destroy(gameObject);
     }
 
 
@@ -114,6 +127,12 @@ public class Enemy : MonoBehaviour
             else
             {
                 PrioritiseTarget(other);
+            }
+
+            foreach (ParticleSystem gun in _guns)
+            {
+                ParticleSystem.EmissionModule emissionModule = gun.emission;
+                emissionModule.enabled = true;
             }
         }
     }

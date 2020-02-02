@@ -5,6 +5,12 @@ using UnityEngine;
 public class Barrier : MonoBehaviour
 {
     [SerializeField]
+    ParticleSystem[] _explosions;
+
+    [SerializeField]
+    GameObject[]    _onOrOf;
+
+    [SerializeField]
     int     MAX_HEALTH = 25;
     int     _enemiesToWithstand;
 
@@ -12,10 +18,19 @@ public class Barrier : MonoBehaviour
     int     DAMAGE = 2;
 
 
+    void Start()
+    {
+        _onOrOf[0].SetActive(true);
+        _onOrOf[1].SetActive(false);
+    }
+
+
     public void Repaired()
     {
-        // change mesh
         _enemiesToWithstand = MAX_HEALTH;
+
+        _onOrOf[0].SetActive(false);
+        _onOrOf[1].SetActive(true);
     }
 
 
@@ -37,5 +52,9 @@ public class Barrier : MonoBehaviour
     {
         // switch model
         // disable particles
+        AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.EXPLOSION);
+
+        _onOrOf[0].SetActive(true);
+        _onOrOf[1].SetActive(false);
     }
 }
