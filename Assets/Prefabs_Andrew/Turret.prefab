@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 277190094802578549}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10, y: 0, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.55, y: 1.55, z: 1.55}
   m_Children:
   - {fileID: 277190094294903054}
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: ce190298443aa2e44805af0f14111d12, type: 3}
       propertyPath: m_Name
-      value: Turret
+      value: Head
       objectReference: {fileID: 0}
     - target: {fileID: 100014, guid: ce190298443aa2e44805af0f14111d12, type: 3}
       propertyPath: m_Name
@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 334094455952115751, guid: d85dfcbcd7445b14fbc16f304bd7d01c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 334094455952115751, guid: d85dfcbcd7445b14fbc16f304bd7d01c,
         type: 3}
@@ -192,7 +192,7 @@ PrefabInstance:
     - target: {fileID: 334094455952115751, guid: d85dfcbcd7445b14fbc16f304bd7d01c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.14
       objectReference: {fileID: 0}
     - target: {fileID: 334094455952115751, guid: d85dfcbcd7445b14fbc16f304bd7d01c,
         type: 3}
@@ -233,6 +233,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 334094455952115750, guid: d85dfcbcd7445b14fbc16f304bd7d01c,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d85dfcbcd7445b14fbc16f304bd7d01c, type: 3}
