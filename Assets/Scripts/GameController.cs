@@ -71,6 +71,8 @@ public class GameController : MonoBehaviour
         _enemyPrefab = Resources.Load<GameObject>("Enemy");
 
         AudioManager.Instance().PlayMusic(AudioManager.Music.AMBIANCE);
+
+        Application.targetFrameRate = 60;
     }
 
 
