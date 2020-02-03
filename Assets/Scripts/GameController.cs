@@ -23,9 +23,15 @@ public class GameController : MonoBehaviour
 
     [SerializeField]
     Slider          _healthBar;
+
     [SerializeField]
     Slider          _repairBar;
 
+    [SerializeField]
+    Text            _roundText;
+
+    [SerializeField]
+    Text            _gameTimeText;
 
     
     Transform[]     _spawnPoints;
@@ -57,7 +63,7 @@ public class GameController : MonoBehaviour
 
         _time = 0;
         _gameTime = 0;
-        _round = 0;
+        _round = 1;
 
         _numberOfEnemies = ENEMIES_TO_SPAWN;
         _enemiesToSpawn = _numberOfEnemies;
@@ -132,5 +138,8 @@ public class GameController : MonoBehaviour
     {
         _healthBar.value = _player.HPFraction;
         _repairBar.value = _player.RepairFraction;
+
+        _roundText.text = "Round: " + _round;
+        _gameTimeText.text = "Time: " + Mathf.Round(_time) + "s";
     }
 }

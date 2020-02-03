@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     GameObject[]     _onOrOf;
+
+    [SerializeField]
+    Transform        _formationCollection;
 
     [Header("General")]
     [SerializeField]
@@ -67,11 +71,14 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        ProcessMovement();
-
-        if (!CrossPlatformInputManager.GetButton("Fire1"))
+        if (_health > 0)
         {
-            _repairTime = 0;
+            ProcessMovement();
+
+            if (!CrossPlatformInputManager.GetButton("Fire1"))
+            {
+                _repairTime = 0;
+            }
         }
     }
 
@@ -99,6 +106,8 @@ public class Player : MonoBehaviour
 
                 _transform.rotation = Quaternion.Euler(0, yRotation, 0);
             }
+
+            _formationCollection.transform.position = _transform.position;
         }
         else
             _rigidbody.velocity = Vector3.zero;
@@ -116,12 +125,17 @@ public class Player : MonoBehaviour
 
     private void ProcessDeath()
     {
-        // explosion
         _onOrOf[0].SetActive(true);
         _onOrOf[1].SetActive(false);
         AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.EXPLOSION);
+
+        Invoke("RestartLevel", 5.0f);
     }
 
+    void RestartLevel()
+    {
+        SceneManager.LoadScene(0);
+    }
 
 
     void OnCollisionStay(Collision collision)
@@ -167,8 +181,7 @@ public class Player : MonoBehaviour
         if (_repairTime >= REACTOR_REPAIR_TIME)
         {
             collision.gameObject.GetComponent<Reactor>().Repaired();
-            if (_repairTime == 0.0f)
-                AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.REPAIRING);
+            AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.REPAIR_COMPLETE);
         }
 
         _targetTime = REACTOR_REPAIR_TIME;
@@ -180,8 +193,7 @@ public class Player : MonoBehaviour
         if (_repairTime >= NPC_REPAIR_TIME)
         {
             collision.gameObject.GetComponent<NPC>().Repaired();
-            if (_repairTime == 0.0f)
-                AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.REPAIRING);
+            AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.REPAIR_COMPLETE);
         }
 
         _targetTime = NPC_REPAIR_TIME;
@@ -193,8 +205,7 @@ public class Player : MonoBehaviour
         if (_repairTime >= BARRIER_REPAIR_TIME)
         {
             collision.gameObject.GetComponent<Barrier>().Repaired();
-            if (_repairTime == 0.0f)
-                AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.REPAIRING);
+            AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.REPAIR_COMPLETE);
         }
 
         _targetTime = BARRIER_REPAIR_TIME;
@@ -224,6 +235,6 @@ public class Player : MonoBehaviour
 
     public float HPFraction
     {
-        get { return _health / MAX_HEALTH; }
+        get { return _health / (float)MAX_HEALTH; }
     }
 }

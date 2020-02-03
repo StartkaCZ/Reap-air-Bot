@@ -74,7 +74,9 @@ public class NPC : MonoBehaviour
         {
             Vector3 size = collider.size;
 
-            collider.size = new Vector3(LINE_OF_SIGHT, size.y, LINE_OF_SIGHT);
+            collider.size = new Vector3(LINE_OF_SIGHT * ConstantHolder.GRID_SIZE, 
+                                        size.y, 
+                                        LINE_OF_SIGHT * ConstantHolder.GRID_SIZE);
         }
     }
 
@@ -84,8 +86,6 @@ public class NPC : MonoBehaviour
     {
         if (_health > 0)
         {
-            _agent.destination = _formationPoint.position;
-
             if (_target != null)
             {
                 float distanceFromTarget = Vector3.Distance(_transform.position, _target.position);
@@ -103,9 +103,15 @@ public class NPC : MonoBehaviour
                 }
                 else
                 {
-                    _transform.LookAt(_target, Vector3.up);
+                    _agent.destination = _target.position;
+
+                    Vector3 direction = _target.position - _transform.position;
+                    float yRotation = Mathf.Atan2(-direction.z, direction.x) * 180 / Mathf.PI;
+                    _transform.rotation = Quaternion.Euler(0, yRotation, 0);
                 }
             }
+            else
+                _agent.destination = _formationPoint.position;
         }
     }
 
@@ -161,6 +167,8 @@ public class NPC : MonoBehaviour
         _rigidbody.isKinematic = true;
         AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.EXPLOSION);
 
+        _agent.isStopped = true;
+
         Vector3 position = _transform.position;
         position.y = _startY * 0.5f;
         _transform.position = position;
@@ -168,6 +176,12 @@ public class NPC : MonoBehaviour
         foreach (ParticleSystem explosion in _explosions)
         {
             ParticleSystem.EmissionModule emissionModule = explosion.emission;
+            emissionModule.enabled = true;
+        }
+
+        foreach (ParticleSystem gun in _guns)
+        {
+            ParticleSystem.EmissionModule emissionModule = gun.emission;
             emissionModule.enabled = false;
         }
     }

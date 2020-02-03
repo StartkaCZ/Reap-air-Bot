@@ -14,6 +14,12 @@ public class Turret : MonoBehaviour
     GameObject[]        _onOrOf;
 
     [SerializeField]
+    Transform           _head;
+
+    [SerializeField]
+    Transform           _base;
+
+    [SerializeField]
     [Range(2.5f, 10.0f)]
     float               LINE_OF_SIGHT = 10.0f;
 
@@ -49,6 +55,12 @@ public class Turret : MonoBehaviour
 
         _onOrOf[0].SetActive(true);
         _onOrOf[1].SetActive(false);
+
+        foreach (ParticleSystem explosion in _explosions)
+        {
+            ParticleSystem.EmissionModule emissionModule = explosion.emission;
+            emissionModule.enabled = true;
+        }
     }
 
     private void SetBoxCollider(BoxCollider collider)
@@ -83,10 +95,19 @@ public class Turret : MonoBehaviour
             if (distanceFromTarget > maxDistance)
             {
                 _target = null;
+
+                foreach (ParticleSystem gun in _guns)
+                {
+                    ParticleSystem.EmissionModule emissionModule = gun.emission;
+                    emissionModule.enabled = false;
+                }
             }
             else
             {
-                _transform.LookAt(_target, Vector3.up);
+                Vector3 direction = _target.position - _transform.position;
+
+                _base.rotation = Quaternion.Euler(0, Mathf.Atan2(-direction.z, direction.x) * 180/Mathf.PI, 0);
+                _head.LookAt(_target, Vector3.up);
             }
         }
     }
@@ -96,7 +117,13 @@ public class Turret : MonoBehaviour
     {
         _onOrOf[0].SetActive(false);
         _onOrOf[1].SetActive(true);
-        _health = 100;
+        _health = MAX_HEALTH;
+
+        foreach (ParticleSystem explosion in _explosions)
+        {
+            ParticleSystem.EmissionModule emissionModule = explosion.emission;
+            emissionModule.enabled = false;
+        }
     }
 
 
@@ -108,6 +135,12 @@ public class Turret : MonoBehaviour
             if (_target == null && other.tag == "Enemy")
             {
                 _target = other.transform;
+
+                foreach (ParticleSystem gun in _guns)
+                {
+                    ParticleSystem.EmissionModule emissionModule = gun.emission;
+                    emissionModule.enabled = true;
+                }
             }
         }
     }
@@ -127,5 +160,17 @@ public class Turret : MonoBehaviour
         AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.EXPLOSION);
         _onOrOf[0].SetActive(true);
         _onOrOf[1].SetActive(false);
+
+        foreach (ParticleSystem explosion in _explosions)
+        {
+            ParticleSystem.EmissionModule emissionModule = explosion.emission;
+            emissionModule.enabled = true;
+        }
+
+        foreach (ParticleSystem gun in _guns)
+        {
+            ParticleSystem.EmissionModule emissionModule = gun.emission;
+            emissionModule.enabled = false;
+        }
     }
 }

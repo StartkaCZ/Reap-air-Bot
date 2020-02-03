@@ -55,7 +55,9 @@ public class Enemy : MonoBehaviour
         {
             Vector3 size = collider.size;
 
-            collider.size = new Vector3(LINE_OF_SIGHT, size.y, LINE_OF_SIGHT);
+            collider.size = new Vector3(LINE_OF_SIGHT * ConstantHolder.GRID_SIZE,
+                                        size.y,
+                                        LINE_OF_SIGHT * ConstantHolder.GRID_SIZE);
         }
     }
 
@@ -84,7 +86,9 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
-                    _transform.LookAt(_target, Vector3.up);
+                    Vector3 direction = _target.position - _transform.position;
+                    float yRotation = Mathf.Atan2(-direction.z, direction.x) * 180 / Mathf.PI;
+                    _transform.rotation = Quaternion.Euler(0, yRotation, 0);
                 }
             }
         }
@@ -108,9 +112,22 @@ public class Enemy : MonoBehaviour
 
     private void ProcessDeath()
     {
-        // explode
         _target = null;
         AudioManager.Instance().PlaySoundEffect(AudioManager.SoundEffect.EXPLOSION);
+
+        foreach (ParticleSystem explosion in _explosions)
+        {
+            ParticleSystem.EmissionModule emissionModule = explosion.emission;
+            emissionModule.enabled = true;
+        }
+
+        _agent.isStopped = true;
+
+        Invoke("RemoveSelf", 5.0f);
+    }
+
+    private void RemoveSelf()
+    {
         Destroy(gameObject);
     }
 

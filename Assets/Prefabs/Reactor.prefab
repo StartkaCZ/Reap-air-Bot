@@ -4707,9 +4707,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6186604743485466930}
-  - component: {fileID: 6186604743492912856}
   m_Layer: 0
-  m_Name: Reactor_On
+  m_Name: Online
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4730,25 +4729,6 @@ Transform:
   m_Father: {fileID: 4465073189685735517}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &6186604743492912856
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6186604743485633810}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 87611b47dada6794a870fb180fc011d4, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6186604743485633812
 GameObject:
   m_ObjectHideFlags: 0
@@ -9957,9 +9937,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8494905690943575838}
-  - component: {fileID: 8494905690953103604}
   m_Layer: 0
-  m_Name: Reactor_Off
+  m_Name: Destroyed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9982,25 +9961,6 @@ Transform:
   m_Father: {fileID: 4465073189685735517}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &8494905690953103604
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8494905690943736638}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 87611b47dada6794a870fb180fc011d4, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9054263625675536294
 GameObject:
   m_ObjectHideFlags: 0
